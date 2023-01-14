@@ -7,12 +7,15 @@ public class Inscripcion {
     private static int cantidadTuristas;
     private int costo;
 
+    private Salida salida;
+
     public Inscripcion() {
     }
 
-    public Inscripcion(Date fechaInscripcion, int costo) {
+    public Inscripcion(Date fechaInscripcion, int costo, Salida salida) {
         this.fechaInscripcion = fechaInscripcion;
         this.costo = costo;
+        this.salida = salida;
     }
 
     public Date getFechaInscripcion() {
@@ -37,5 +40,13 @@ public class Inscripcion {
 
     public void setCosto(int costo) {
         this.costo = costo;
+    }
+
+    public Salida getSalida() {
+        return salida;
+    }
+
+    public void setSalida(Salida salida) {
+        this.salida = salida;
     }
 }
