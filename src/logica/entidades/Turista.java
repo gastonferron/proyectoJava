@@ -7,15 +7,18 @@ public class Turista extends Usuario{
     private String nacionalidad;
 
     private List<Inscripcion> inscripciones;
+    private List<Compra> compras;
 
     public Turista() {
         super();
         inscripciones = new ArrayList<>();
+        compras = new ArrayList<>();
     }
 
     public Turista(String nickname, String nombreUsuario, String apellido, String email, int fechaNac, String nacionalidad) {
         super(nickname, nombreUsuario, apellido, email, fechaNac);
         inscripciones = new ArrayList<>();
+        compras = new ArrayList<>();
         this.nacionalidad = nacionalidad;
     }
 
@@ -34,4 +37,13 @@ public class Turista extends Usuario{
     public void setInscripciones(List<Inscripcion> inscripciones) {
         this.inscripciones = inscripciones;
     }
+
+    public List<Compra> getCompras() {
+        return compras;
+    }
+
+    public void setCompras(List<Compra> compras) {
+        this.compras = compras;
+    }
+
 }

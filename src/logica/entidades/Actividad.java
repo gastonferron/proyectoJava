@@ -1,6 +1,8 @@
 package logica.entidades;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class Actividad {
     private String lugarSalida;
@@ -11,11 +13,17 @@ public class Actividad {
     private int costo;
     private String ciudad;
     private Date fechaALta;
+    private List<Salida> salidas;
+    private List<Paquete> paquetes;
 
     public Actividad() {
+        salidas = new ArrayList<>();
+        paquetes = new ArrayList<>();
     }
 
     public Actividad(String lugarSalida, String proveedor, String nombreActividad, String descripcion, int duracionHoras, int costo, String ciudad, Date fechaALta) {
+        salidas = new ArrayList<>();
+        paquetes = new ArrayList<>();
         this.lugarSalida = lugarSalida;
         this.proveedor = proveedor;
         this.nombreActividad = nombreActividad;
@@ -88,5 +96,21 @@ public class Actividad {
 
     public void setFechaALta(Date fechaALta) {
         this.fechaALta = fechaALta;
+    }
+
+    public List<Salida> getSalidas() {
+        return salidas;
+    }
+
+    public void setSalidas(List<Salida> salidas) {
+        this.salidas = salidas;
+    }
+
+    public List<Paquete> getPaquetes() {
+        return paquetes;
+    }
+
+    public void setPaquetes(List<Paquete> paquetes) {
+        this.paquetes = paquetes;
     }
 }

@@ -1,14 +1,22 @@
 package logica.entidades;
 
+import java.awt.*;
+import java.util.ArrayList;
+import java.util.List;
+
 public class Departamento {
     private String nombreDepartamento;
     private String descripcion;
     private String url;
 
+    private List<Actividad> actividads;
+
     public Departamento() {
+        actividads = new ArrayList<>();
     }
 
     public Departamento(String nombreDepartamento, String descripcion, String url) {
+        actividads = new ArrayList<>();
         this.nombreDepartamento = nombreDepartamento;
         this.descripcion = descripcion;
         this.url = url;
@@ -36,5 +44,13 @@ public class Departamento {
 
     public void setUrl(String url) {
         this.url = url;
+    }
+
+    public List<Actividad> getActividads() {
+        return actividads;
+    }
+
+    public void setActividads(List<Actividad> actividads) {
+        this.actividads = actividads;
     }
 }

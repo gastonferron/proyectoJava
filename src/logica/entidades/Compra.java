@@ -7,14 +7,16 @@ public class Compra {
     private static int cantidadTuristas;
     private int costoTotal;
     private Date vencimiento;
+    private Compra compra;
 
     public Compra() {
     }
 
-    public Compra(Date fecha, int costoTotal, Date vencimiento) {
+    public Compra(Date fecha, int costoTotal, Date vencimiento, Compra compra) {
         this.fecha = fecha;
         this.costoTotal = costoTotal;
         this.vencimiento = vencimiento;
+        this.compra = compra;
     }
 
     public Date getFecha() {
@@ -47,5 +49,13 @@ public class Compra {
 
     public void setVencimiento(Date vencimiento) {
         this.vencimiento = vencimiento;
+    }
+
+    public Compra getCompra() {
+        return compra;
+    }
+
+    public void setCompra(Compra compra) {
+        this.compra = compra;
     }
 }
