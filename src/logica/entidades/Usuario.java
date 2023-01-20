@@ -1,16 +1,18 @@
 package logica.entidades;
 
+import java.time.LocalDate;
+
 public class Usuario {
     protected String nickname;
     protected String nombreUsuario;
     protected String apellido;
     protected String email;
-    protected int fechaNac;
+    protected LocalDate fechaNac;
 
     public Usuario() {
     }
 
-    public Usuario(String nickname, String nombreUsuario, String apellido, String email, int fechaNac) {
+    public Usuario(String nickname, String nombreUsuario, String apellido, String email, LocalDate fechaNac) {
         this.nickname = nickname;
         this.nombreUsuario = nombreUsuario;
         this.apellido = apellido;
@@ -50,11 +52,11 @@ public class Usuario {
         this.email = email;
     }
 
-    public int getFechaNac() {
+    public LocalDate getFechaNac() {
         return fechaNac;
     }
 
-    public void setFechaNac(int fechaNac) {
+    public void setFechaNac(LocalDate fechaNac) {
         this.fechaNac = fechaNac;
     }
 }

@@ -1,5 +1,6 @@
 package logica.entidades;
 
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -14,7 +15,7 @@ public class Proveedor extends Usuario{
         actividads = new ArrayList<>();
     }
 
-    public Proveedor(String nickname, String nombreUsuario, String apellido, String email, int fechaNac, String descripcionGeneral, String link) {
+    public Proveedor(String nickname, String nombreUsuario, String apellido, String email, LocalDate fechaNac, String descripcionGeneral, String link) {
         super(nickname, nombreUsuario, apellido, email, fechaNac);
         actividads = new ArrayList<>();
         this.descripcionGeneral = descripcionGeneral;
