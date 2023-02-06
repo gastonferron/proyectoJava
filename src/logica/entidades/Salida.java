@@ -1,26 +1,29 @@
 package logica.entidades;
 
-import java.util.Date;
+import logica.DTs.DTSalida;
+
+import java.time.LocalDateTime;
 
 public class Salida {
     private String nombreSalida;
-    private String actividadAsociada[];
     private static int cantidadMaximaTuristas;
-    private Date fechaAlta;
-    private Date fecha;
-    private Date hora;
+    private LocalDateTime fechayHoraAlta;
+    private LocalDateTime fechayHoraSalida;
     private String lugarSalida;
 
     public Salida() {
     }
 
-    public Salida(String nombreSalida, String[] actividadAsociada, Date fechaAlta, Date fecha, Date hora, String lugarSalida) {
+    public Salida(String nombreSalida, LocalDateTime fechayHoraAlta, LocalDateTime fechayHoraSalida, String lugarSalida) {
         this.nombreSalida = nombreSalida;
-        this.actividadAsociada = actividadAsociada;
-        this.fechaAlta = fechaAlta;
-        this.fecha = fecha;
-        this.hora = hora;
+        this.fechayHoraAlta = fechayHoraAlta;
+        this.fechayHoraSalida = fechayHoraSalida;
         this.lugarSalida = lugarSalida;
+    }
+
+    public DTSalida obtenerDTSalida(){
+        DTSalida dts = new DTSalida(nombreSalida, fechayHoraAlta, fechayHoraSalida,lugarSalida);
+        return  dts;
     }
 
     public String getNombreSalida() {
@@ -31,14 +34,6 @@ public class Salida {
         this.nombreSalida = nombreSalida;
     }
 
-    public String[] getActividadAsociada() {
-        return actividadAsociada;
-    }
-
-    public void setActividadAsociada(String[] actividadAsociada) {
-        this.actividadAsociada = actividadAsociada;
-    }
-
     public static int getCantidadMaximaTuristas() {
         return cantidadMaximaTuristas;
     }
@@ -47,28 +42,20 @@ public class Salida {
         Salida.cantidadMaximaTuristas = cantidadMaximaTuristas;
     }
 
-    public Date getFechaAlta() {
-        return fechaAlta;
+    public LocalDateTime getFechayHoraAlta() {
+        return fechayHoraAlta;
     }
 
-    public void setFechaAlta(Date fechaAlta) {
-        this.fechaAlta = fechaAlta;
+    public void setFechayHoraAlta(LocalDateTime fechayHoraAlta) {
+        this.fechayHoraAlta = fechayHoraAlta;
     }
 
-    public Date getFecha() {
-        return fecha;
+    public LocalDateTime getFechayHoraSalida() {
+        return fechayHoraSalida;
     }
 
-    public void setFecha(Date fecha) {
-        this.fecha = fecha;
-    }
-
-    public Date getHora() {
-        return hora;
-    }
-
-    public void setHora(Date hora) {
-        this.hora = hora;
+    public void setFechayHoraSalida(LocalDateTime fechayHoraSalida) {
+        this.fechayHoraSalida = fechayHoraSalida;
     }
 
     public String getLugarSalida() {

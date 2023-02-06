@@ -3,6 +3,7 @@ package presentacion;
 import logica.controladores.ControladorUsuario;
 import logica.entidades.Usuario;
 
+import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class main {
@@ -24,7 +25,7 @@ public class main {
 
             switch (teclado){
                 case 1:
-                    usuario.altaProveedor(teclado, teclado, teclado, teclado, teclado, teclado,teclado);
+                    usuario.altaProveedor();
                     break;
                 case 2:
                     break;
@@ -34,6 +35,14 @@ public class main {
                     System.out.println("Elija una de las 3 opciones");
                     break;
             }
+        }
+    }
+
+    private static String ingresarString(String textoAMostrar){
+        try (Scanner sc = new Scanner(System.in)){
+           return sc.nextLine();
+        } catch (Exception e){
+            return null;
         }
     }
 }
