@@ -1,38 +1,41 @@
 package presentacion;
 
-import logica.controladores.ControladorUsuario;
-import logica.entidades.Usuario;
-
-import java.sql.SQLOutput;
 import java.util.Scanner;
 
 public class main {
     public static void main(String[] args) {
         Scanner consola = new Scanner(System.in);
+        MetodosMain mm = new MetodosMain();
         boolean salida = false;
-        String teclado;
-        ControladorUsuario usuario = new ControladorUsuario();
 
         while (!salida){
             System.out.println("Welcome wachin");
-            System.out.println("Elige una opcion");
+            System.out.println("Elija una opcion");
 
-            System.out.println("Opcion 1: Alta proveedor");
-            System.out.println("Opcion 2: Alta Turista");
-            System.out.println("Opcion 3: Ver Usuarios");
+            System.out.println("Menu");
+            System.out.println("Opcion 1: Alta de Usuario");
+            System.out.println("Opcion 2: Consulta de Usuario");
+            System.out.println("Opcion 3: Modificar Datos de Usuario");
+            System.out.println("Opcion 4: Alta Actividad Turistica");
+            System.out.println("Opcion 5: Consulta Actividad Turistica");
+            System.out.println("Opcion 6: Alta Salida Turistica");
+            System.out.println("Opcion 7: Consulta Salida Turistica");
+            System.out.println("Opcion 8: Inscripcion Salida Turistica");
+            System.out.println("Opcion 9: Alta Departamento");
 
-            teclado = consola.nextLine();
+            int opciones = consola.nextInt();
 
-            switch (teclado){
+            switch (opciones){
                 case 1:
-                    usuario.altaProveedor();
+
                     break;
                 case 2:
                     break;
-                case 3:
+                case 9:
+                    mm.altaDepto();
                     break;
                 default:
-                    System.out.println("Elija una de las 3 opciones");
+                    System.out.println("Elija una opcione valida");
                     break;
             }
         }
