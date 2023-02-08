@@ -1,5 +1,7 @@
 package logica.entidades;
 
+import logica.DTs.DTUsuario;
+
 import java.time.LocalDate;
 
 public class Usuario {
@@ -18,6 +20,11 @@ public class Usuario {
         this.apellido = apellido;
         this.email = email;
         this.fechaNac = fechaNac;
+    }
+
+    public DTUsuario obtenerDTUsuario(){
+        DTUsuario dtU = new DTUsuario(nickname, nombreUsuario, apellido, email, fechaNac);
+        return dtU;
     }
 
     public String getNickname() {

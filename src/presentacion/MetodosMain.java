@@ -6,7 +6,6 @@ import logica.controladores.IControladorUsuario;
 import logica.excepeciones.EntidadExiste;
 
 import java.time.LocalDate;
-import java.util.Locale;
 import java.util.Scanner;
 
 public class MetodosMain {

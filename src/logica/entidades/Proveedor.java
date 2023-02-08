@@ -1,5 +1,7 @@
 package logica.entidades;
 
+import logica.DTs.DTProveedor;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -20,6 +22,11 @@ public class Proveedor extends Usuario{
         actividads = new ArrayList<>();
         this.descripcionGeneral = descripcionGeneral;
         this.link = link;
+    }
+
+    public DTProveedor obtenerProveedor(){
+        DTProveedor dtP = new DTProveedor(nickname, nombreUsuario, apellido, email, fechaNac, descripcionGeneral, link, actividads);
+        return dtP;
     }
 
     public String getDescripcionGeneral() {
