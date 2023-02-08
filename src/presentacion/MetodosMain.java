@@ -46,7 +46,7 @@ public class MetodosMain {
         int opcion = entrada.nextInt();
         switch (opcion){
             case 1:
-
+                altaTurista();
                 break;
             case 2:
                 break;
@@ -70,11 +70,33 @@ public class MetodosMain {
         System.out.println("Ingrese el apellido");
         String apellido = entrada.nextLine();
 
-        LocalDate fecha = LocalDate.now();
+        System.out.println("Ingrese email");
+        String email = entrada.nextLine();
+
+        System.out.println("Ingrese su fecha de nacimiento");
+
+        System.out.println("Ingrese el año");
+        int anio = entrada.nextInt();
+
+        System.out.println("Ingrese el mes");
+        int mes = entrada.nextInt();
+
+        System.out.println("Ingrese el dia");
+        int dia = entrada.nextInt();
+
+        LocalDate fechanac = LocalDate.of(anio , mes , dia);
 
         System.out.println("Ingrese su nacionalidad");
         String nacionalidad = entrada.nextLine();
+
+        try{
+            iCU.altaTurista(nickname, nombre, apellido, email, LocalDate.parse(fechanac.toString()), nacionalidad);
+        }catch (EntidadExiste e){
+            System.out.println("El nickname del usuario ya esta en uso");
+        }
+    }
+    public void altaProveedor(){
+
     }
 
-    public
 }

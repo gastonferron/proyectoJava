@@ -22,20 +22,24 @@ public class main {
             System.out.println("Opcion 7: Consulta Salida Turistica");
             System.out.println("Opcion 8: Inscripcion Salida Turistica");
             System.out.println("Opcion 9: Alta Departamento");
+            System.out.println("Opcion 0: Salir");
 
             int opciones = consola.nextInt();
 
             switch (opciones){
                 case 1:
-
+                    mm.altaUsuario();
                     break;
                 case 2:
                     break;
                 case 9:
                     mm.altaDepto();
                     break;
+                case 0:
+                    salida = true;
+                    break;
                 default:
-                    System.out.println("Elija una opcione valida");
+                    System.out.println("Elija una opcion valida");
                     break;
             }
         }

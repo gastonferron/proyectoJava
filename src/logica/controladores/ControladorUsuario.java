@@ -19,7 +19,7 @@ public class ControladorUsuario implements IControladorUsuario{
             manejador.addUser(proveedor);
         }
     }
-    public void AltaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws EntidadExiste {
+    public void altaTurista(String nickname, String nombre, String apellido, String email, LocalDate fechaNacimiento, String nacionalidad) throws EntidadExiste {
         ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
         if (manejador.existUser(nickname)){
             throw new EntidadExiste("El turista ya ha sido creado");
