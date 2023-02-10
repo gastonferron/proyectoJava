@@ -1,10 +1,16 @@
 package logica.controladores;
 
+
+import logica.DTs.DTUsuario;
 import logica.entidades.Proveedor;
 import logica.entidades.Turista;
+import logica.entidades.Usuario;
 import logica.excepeciones.EntidadExiste;
+import logica.excepeciones.EntidadNoExiste;
 import logica.manejadores.ManejadorUsuario;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
 
 public class ControladorUsuario implements IControladorUsuario{
 
@@ -29,14 +35,22 @@ public class ControladorUsuario implements IControladorUsuario{
             manejador.addUser(turista);
         }
     }
-    public void verUsuario(String nickname){
+    public DTUsuario obtenerUsuario(String nickname) throws EntidadNoExiste {
         ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
-        manejador.getUser(nickname);
+        Usuario user = manejador.getUser(nickname);
+        if (user == null){
+            throw new EntidadNoExiste();
+        }
+        return user.obtenerDTUsuario();
     }
 
-    public void verAllUsers(){
+    public List<DTUsuario> obtenerAllUsers(){
         ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
-        manejador.getAllUsers();
+        List<Usuario> lista = manejador.getAllUsers();
+        List<DTUsuario> listaUsuarios = new ArrayList<>();
+        for (Usuario user: lista) {
+            listaUsuarios.add(user.obtenerDTUsuario());
+        }
+        return listaUsuarios;
     }
-
 }

@@ -1,11 +1,13 @@
 package presentacion;
 
+import logica.DTs.DTUsuario;
 import logica.controladores.Fabrica;
 import logica.controladores.IControladorActividadTuristica;
 import logica.controladores.IControladorUsuario;
 import logica.excepeciones.EntidadExiste;
 
 import java.time.LocalDate;
+import java.util.List;
 import java.util.Scanner;
 
 public class MetodosMain {
@@ -27,17 +29,14 @@ public class MetodosMain {
         String url = entrada.nextLine();
 
         try {
-            icAct.altaDepartamento(nomDep, nomDep,url);
+            icAct.altaDepartamento(nomDep, descDep,url);
         }catch (EntidadExiste e){
             System.out.println("Ya existe el Departamento");
         }
     }
 
     public void altaUsuario(){
-
         Scanner entrada = new Scanner(System.in);
-        Fabrica fabrica = Fabrica.getInstanciaFabrica();
-        IControladorUsuario iCU = fabrica.getIControladorUsuario();
 
         System.out.println("Ingrese que tipo de usuario quiere dar de alta");
         System.out.println("Opcion 1: Alta de Turista");
@@ -136,5 +135,14 @@ public class MetodosMain {
         }catch (EntidadExiste e){
             System.out.println("Ese Proveedor ya existe");
         }
+    }
+
+    public List<DTUsuario> consultaUsuario(){
+        Scanner entrada = new Scanner(System.in);
+        Fabrica fabrica = Fabrica.getInstanciaFabrica();
+        IControladorUsuario iCU = fabrica.getIControladorUsuario();
+        
+
+        return null;
     }
 }

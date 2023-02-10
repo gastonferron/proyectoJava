@@ -3,7 +3,6 @@ package logica.controladores;
 import logica.DTs.DTSalida;
 import logica.entidades.Actividad;
 import logica.entidades.Departamento;
-import logica.entidades.Inscripcion;
 import logica.entidades.Salida;
 import logica.excepeciones.ActividadExiste;
 import logica.excepeciones.EntidadExiste;

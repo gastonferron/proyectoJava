@@ -1,6 +1,7 @@
 package logica.entidades;
 
 import logica.DTs.DTProveedor;
+import logica.DTs.DTUsuario;
 
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -17,16 +18,24 @@ public class Proveedor extends Usuario{
         actividads = new ArrayList<>();
     }
 
+    @Override
+    public DTUsuario obtenerDTUsuario() {
+        return new DTProveedor(nickname, nombreUsuario, apellido, email, fechaNac, descripcionGeneral, link, actividads);
+    }
+
+    public DTProveedor obtenerDTProveedor(){
+        DTUsuario dtu = obtenerDTUsuario();
+        if (dtu instanceof DTProveedor){
+            return (DTProveedor)obtenerDTUsuario();
+        }
+        return null;
+    }
+
     public Proveedor(String nickname, String nombreUsuario, String apellido, String email, LocalDate fechaNac, String descripcionGeneral, String link) {
         super(nickname, nombreUsuario, apellido, email, fechaNac);
         actividads = new ArrayList<>();
         this.descripcionGeneral = descripcionGeneral;
         this.link = link;
-    }
-
-    public DTProveedor obtenerProveedor(){
-        DTProveedor dtP = new DTProveedor(nickname, nombreUsuario, apellido, email, fechaNac, descripcionGeneral, link, actividads);
-        return dtP;
     }
 
     public String getDescripcionGeneral() {

@@ -4,7 +4,7 @@ import logica.DTs.DTUsuario;
 
 import java.time.LocalDate;
 
-public class Usuario {
+public abstract class Usuario {
     protected String nickname;
     protected String nombreUsuario;
     protected String apellido;
@@ -22,10 +22,7 @@ public class Usuario {
         this.fechaNac = fechaNac;
     }
 
-    public DTUsuario obtenerDTUsuario(){
-        DTUsuario dtU = new DTUsuario(nickname, nombreUsuario, apellido, email, fechaNac);
-        return dtU;
-    }
+    public abstract DTUsuario obtenerDTUsuario();
 
     public String getNickname() {
         return nickname;

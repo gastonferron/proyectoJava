@@ -1,5 +1,8 @@
 package logica.entidades;
 
+import logica.DTs.DTTurista;
+import logica.DTs.DTUsuario;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -14,6 +17,15 @@ public class Turista extends Usuario{
         super();
         inscripciones = new ArrayList<>();
         compras = new ArrayList<>();
+    }
+
+    @Override
+    public DTUsuario obtenerDTUsuario() {
+        return new DTTurista(nickname, nombreUsuario, apellido, email, fechaNac, nacionalidad);
+    }
+
+    public DTTurista obtenerDTTurista(){
+        return (DTTurista)obtenerDTUsuario();
     }
 
     public Turista(String nickname, String nombreUsuario, String apellido, String email, LocalDate fechaNac, String nacionalidad) {
