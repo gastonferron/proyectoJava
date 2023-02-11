@@ -35,4 +35,5 @@ public class ManejadorUsuario {
     public boolean existUser(String nickname){
         return usuarios.containsKey(nickname);
     }
+
 }

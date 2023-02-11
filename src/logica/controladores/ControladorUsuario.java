@@ -1,6 +1,7 @@
 package logica.controladores;
 
 
+import logica.DTs.DTProveedor;
 import logica.DTs.DTUsuario;
 import logica.entidades.Proveedor;
 import logica.entidades.Turista;
@@ -8,6 +9,7 @@ import logica.entidades.Usuario;
 import logica.excepeciones.EntidadExiste;
 import logica.excepeciones.EntidadNoExiste;
 import logica.manejadores.ManejadorUsuario;
+
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
@@ -39,12 +41,12 @@ public class ControladorUsuario implements IControladorUsuario{
         ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
         Usuario user = manejador.getUser(nickname);
         if (user == null){
-            throw new EntidadNoExiste();
+            throw new EntidadNoExiste("El usuario no existe");
         }
         return user.obtenerDTUsuario();
     }
 
-    public List<DTUsuario> obtenerAllUsers(){
+    public List<DTUsuario> obtenerAllUsers() {
         ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
         List<Usuario> lista = manejador.getAllUsers();
         List<DTUsuario> listaUsuarios = new ArrayList<>();
@@ -52,5 +54,16 @@ public class ControladorUsuario implements IControladorUsuario{
             listaUsuarios.add(user.obtenerDTUsuario());
         }
         return listaUsuarios;
+    }
+    public List<DTProveedor> obtenerAllProveedores(){
+        ManejadorUsuario manejador = ManejadorUsuario.getInstanciaUsuario();
+        List<Usuario> lista = manejador.getAllUsers();
+        List<DTProveedor> listaProveedores = new ArrayList<>();
+        for (Usuario user: lista) {
+            if (user instanceof Proveedor){
+                listaProveedores.add(((Proveedor) user).obtenerDTProveedor());
+            }
+        }
+        return listaProveedores;
     }
 }

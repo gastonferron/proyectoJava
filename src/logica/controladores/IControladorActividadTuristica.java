@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import logica.DTs.DTDepartamento;
 import logica.DTs.DTSalida;
 import logica.excepeciones.ActividadExiste;
 import logica.excepeciones.EntidadExiste;
@@ -13,11 +14,11 @@ public interface IControladorActividadTuristica {
 
     public void altaDepartamento(String nombre, String descripcion, String url) throws EntidadExiste;
 
-    public void verDepartamento(String idDepartamento);
+    public DTDepartamento obtenerDepartamento(String idDepartamento) throws EntidadNoExiste;
 
-    public void verAllDepartamentos();
+    public List<DTDepartamento> obtenerAllDepartamentos();
 
-    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String proveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta) throws ActividadExiste;
+    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String idProveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento)  throws ActividadExiste;
 
     public List<DTSalida> obtenerSalidas(String idActividades) throws EntidadNoExiste;
 

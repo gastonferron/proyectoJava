@@ -11,16 +11,16 @@ public class Proveedor extends Usuario{
     private String descripcionGeneral;
     private String link;
 
-    private List<Actividad> actividads;
+    private List<Actividad> actividades;
 
     public Proveedor() {
         super();
-        actividads = new ArrayList<>();
+        actividades = new ArrayList<>();
     }
 
     @Override
     public DTUsuario obtenerDTUsuario() {
-        return new DTProveedor(nickname, nombreUsuario, apellido, email, fechaNac, descripcionGeneral, link, actividads);
+        return new DTProveedor(nickname, nombreUsuario, apellido, email, fechaNac, descripcionGeneral, link, actividades);
     }
 
     public DTProveedor obtenerDTProveedor(){
@@ -31,9 +31,13 @@ public class Proveedor extends Usuario{
         return null;
     }
 
+    public void addActividad(Actividad actividad){
+        actividades.add(actividad);
+    }
+
     public Proveedor(String nickname, String nombreUsuario, String apellido, String email, LocalDate fechaNac, String descripcionGeneral, String link) {
         super(nickname, nombreUsuario, apellido, email, fechaNac);
-        actividads = new ArrayList<>();
+        actividades = new ArrayList<>();
         this.descripcionGeneral = descripcionGeneral;
         this.link = link;
     }
@@ -55,10 +59,10 @@ public class Proveedor extends Usuario{
     }
 
     public List<Actividad> getActividads() {
-        return actividads;
+        return actividades;
     }
 
     public void setActividads(List<Actividad> actividads) {
-        this.actividads = actividads;
+        this.actividades = actividads;
     }
 }

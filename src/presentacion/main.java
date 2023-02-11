@@ -31,6 +31,13 @@ public class main {
                     mm.altaUsuario();
                     break;
                 case 2:
+                    mm.consultaUsuario();
+                    break;
+                case 3:
+                    mm.modificarDatosUsuario();
+                    break;
+                case 4:
+                    mm.altaDeActividadTuristica();
                     break;
                 case 9:
                     mm.altaDepto();
@@ -42,14 +49,6 @@ public class main {
                     System.out.println("Elija una opcion valida");
                     break;
             }
-        }
-    }
-
-    private static String ingresarString(String textoAMostrar){
-        try (Scanner sc = new Scanner(System.in)){
-           return sc.nextLine();
-        } catch (Exception e){
-            return null;
         }
     }
 }

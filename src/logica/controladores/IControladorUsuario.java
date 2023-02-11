@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import logica.DTs.DTProveedor;
 import logica.DTs.DTUsuario;
 import logica.excepeciones.EntidadExiste;
 import logica.excepeciones.EntidadNoExiste;
@@ -15,4 +16,5 @@ public interface IControladorUsuario {
     public DTUsuario obtenerUsuario(String nickname) throws EntidadNoExiste;
 
     public List<DTUsuario> obtenerAllUsers();
+    public List<DTProveedor> obtenerAllProveedores();
 }

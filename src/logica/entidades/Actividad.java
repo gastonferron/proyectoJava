@@ -7,7 +7,6 @@ import java.util.List;
 
 public class Actividad {
     private String lugarSalida;
-    private String proveedor;
     private String nombreActividad;
     private String descripcion;
     private int duracionHoras;
@@ -22,11 +21,10 @@ public class Actividad {
         paquetes = new ArrayList<>();
     }
 
-    public Actividad(String lugarSalida, String proveedor, String nombreActividad, String descripcion, int duracionHoras, int costo, String ciudad, LocalDate fechaALta) {
+    public Actividad(String lugarSalida, String nombreActividad, String descripcion, int duracionHoras, int costo, String ciudad, LocalDate fechaALta) {
         salidas = new ArrayList<>();
         paquetes = new ArrayList<>();
         this.lugarSalida = lugarSalida;
-        this.proveedor = proveedor;
         this.nombreActividad = nombreActividad;
         this.descripcion = descripcion;
         this.duracionHoras = duracionHoras;
@@ -41,14 +39,6 @@ public class Actividad {
 
     public void setLugarSalida(String lugarSalida) {
         this.lugarSalida = lugarSalida;
-    }
-
-    public String getProveedor() {
-        return proveedor;
-    }
-
-    public void setProveedor(String proveedor) {
-        this.proveedor = proveedor;
     }
 
     public String getNombreActividad() {

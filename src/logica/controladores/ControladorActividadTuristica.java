@@ -1,8 +1,10 @@
 package logica.controladores;
 
+import logica.DTs.DTDepartamento;
 import logica.DTs.DTSalida;
 import logica.entidades.Actividad;
 import logica.entidades.Departamento;
+import logica.entidades.Proveedor;
 import logica.entidades.Salida;
 import logica.excepeciones.ActividadExiste;
 import logica.excepeciones.EntidadExiste;
@@ -10,6 +12,7 @@ import logica.excepeciones.EntidadNoExiste;
 import logica.manejadores.ManejadorActividad;
 import logica.manejadores.ManejadorDepartamento;
 import logica.manejadores.ManejadorSalidaTuristica;
+import logica.manejadores.ManejadorUsuario;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
@@ -19,14 +22,20 @@ import java.util.List;
 public class ControladorActividadTuristica implements IControladorActividadTuristica{
 
     @Override
-    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String proveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta) throws ActividadExiste {
+    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String idProveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento) throws ActividadExiste {
         ManejadorActividad manejadorAct = ManejadorActividad.getInstanciaActividad();
+        ManejadorDepartamento manejadorDepa = ManejadorDepartamento.getInstanciaDepartamento();
+        ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstanciaUsuario();
+        ManejadorSalidaTuristica manejadorSalidaTuristica = ManejadorSalidaTuristica.getInstanciaTuristica();
+
         if (manejadorAct.existActividad(nombreActividad)){
             throw new ActividadExiste("La actividad ya ha sido creada");
         }
         else{
-            Actividad actividad = new Actividad(lugarSalida, proveedor, nombreActividad, descripcion,duracionHoras, costo, ciudad, fechaAlta);
+            Actividad actividad = new Actividad(lugarSalida, nombreActividad, descripcion,duracionHoras, costo, ciudad, fechaAlta);
             manejadorAct.addActividad(actividad);
+            manejadorDepa.getDepartamento(idDepartamento).addActividad(actividad);
+            ( (Proveedor) manejadorUsuario.getUser ( idProveedor ) ).addActividad(actividad);
         }
     }
 
@@ -45,15 +54,25 @@ public class ControladorActividadTuristica implements IControladorActividadTuris
     }
 
     @Override
-    public void verDepartamento(String idDepartamento) {
+    public DTDepartamento obtenerDepartamento(String idDepartamento) throws EntidadNoExiste{
         ManejadorDepartamento manejadorDepa = ManejadorDepartamento.getInstanciaDepartamento();
-        manejadorDepa.getDepartamento(idDepartamento);
+        Departamento depa = manejadorDepa.getDepartamento(idDepartamento);
+        if (depa == null){
+            throw new EntidadNoExiste("No existe el Departamento");
+        }
+        return depa.obtenerDTDepartamento();
     }
 
     @Override
-    public void verAllDepartamentos() {
+    public List<DTDepartamento> obtenerAllDepartamentos() {
         ManejadorDepartamento manejadorDepa = ManejadorDepartamento.getInstanciaDepartamento();
-        manejadorDepa.getAllDepartamentos();
+        List<Departamento> lista = manejadorDepa.getAllDepartamentos();
+        List<DTDepartamento> listaDepartamentos = new ArrayList<>();
+
+        for (Departamento depas:lista) {
+            listaDepartamentos.add(depas.obtenerDTDepartamento());
+        }
+        return listaDepartamentos;
     }
 
     @Override
@@ -61,7 +80,7 @@ public class ControladorActividadTuristica implements IControladorActividadTuris
         ManejadorActividad mActvidades = ManejadorActividad.getInstanciaActividad();
         Actividad actividad = mActvidades.getActividad(idActividades);
         if (actividad == null){
-            throw new EntidadNoExiste();
+            throw new EntidadNoExiste("La salida no existe");
         }
         List<Salida> salidasAsociadas = actividad.getSalidas();
         List<DTSalida> listaDTSalidas = new ArrayList<>();
@@ -79,6 +98,6 @@ public class ControladorActividadTuristica implements IControladorActividadTuris
 
     @Override
     public void inscripcionTuristicas(String nickname, String idSalida, int cantTuristicas, LocalDateTime fecha) throws EntidadExiste {
-
+        throw new EntidadExiste("a");
     }
 }

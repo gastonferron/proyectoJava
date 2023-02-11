@@ -1,5 +1,8 @@
 package presentacion;
 
+import logica.DTs.DTDepartamento;
+import logica.DTs.DTProveedor;
+import logica.DTs.DTTurista;
 import logica.DTs.DTUsuario;
 import logica.controladores.Fabrica;
 import logica.controladores.IControladorActividadTuristica;
@@ -42,16 +45,12 @@ public class MetodosMain {
         System.out.println("Opcion 1: Alta de Turista");
         System.out.println("Opcion 2: Alta de Proveedor");
         int opcion = entrada.nextInt();
-        switch (opcion){
-            case 1:
-                altaTurista();
-                break;
-            case 2:
-                altaProveedor();
-                break;
-            default:
-                System.out.println("Ingrese una opcion valida");
-                break;
+        if (opcion == 1){
+            altaTurista();
+        } else if (opcion == 2) {
+            altaProveedor();
+        }else {
+            System.out.println("Opcion no valida");
         }
 
     }
@@ -137,12 +136,98 @@ public class MetodosMain {
         }
     }
 
-    public List<DTUsuario> consultaUsuario(){
+    public List<DTUsuario>  consultaUsuario (){
+
         Scanner entrada = new Scanner(System.in);
         Fabrica fabrica = Fabrica.getInstanciaFabrica();
         IControladorUsuario iCU = fabrica.getIControladorUsuario();
-        
+        List<DTUsuario> allUsers = iCU.obtenerAllUsers();
 
-        return null;
+        int contador = 0;
+        System.out.println("Lista de todos los usuarios");
+        for (DTUsuario dtu: allUsers) {
+            System.out.println("[" + contador + "]" + " : " + dtu.getNickname());
+            contador ++;
+        }
+        System.out.println("Elija a uno de los usuarios");
+
+        int eleccion = entrada.nextInt();
+
+        DTUsuario usuario = allUsers.get(eleccion);
+
+        System.out.println("Usuario " + usuario.getNickname());
+        System.out.println("Nombre " + usuario.getNombreUsuario());
+        System.out.println("Apellido " + usuario.getApellido());
+        System.out.println("Email " + usuario.getEmail());
+        System.out.println("Fecha de nacimiento " + usuario.getFechaNac());
+
+        if(usuario instanceof DTProveedor){
+            System.out.println("Descripcion " + ((DTProveedor) usuario).getDescripcionGeneral());
+            System.out.println("Link: " + ((DTProveedor) usuario).getLink());
+            System.out.println("Actividades a la que pertenece" + ((DTProveedor) usuario).getActividads());
+        } else if (usuario instanceof DTTurista) {
+            System.out.println("Nacionalidad" + ((DTTurista) usuario).getNacionalidad());
+        }else{
+            System.out.println("El tipo de usuario no esta definido corractamente");
+        }return null;
     }
+
+    public void modificarDatosUsuario(){}
+    public void altaDeActividadTuristica(){
+
+        Scanner entrada = new Scanner(System.in);
+        Fabrica fabrica = Fabrica.getInstanciaFabrica();
+        IControladorUsuario iCU = fabrica.getIControladorUsuario();
+        List<DTProveedor> allProveedores = iCU.obtenerAllProveedores();
+        IControladorActividadTuristica iCAT = fabrica.getIControladorActividadTuristica();
+        List<DTDepartamento> allDepartamentos = iCAT.obtenerAllDepartamentos();
+
+        int contador = 0;
+        System.out.println("Lista de todos los Proveedores");
+        for (DTProveedor dtp: allProveedores) {
+            System.out.println("[" + contador + "]" + " : " + dtp.getNickname());
+            contador ++;
+        }
+        System.out.println("Elija un Proveedor");
+        int eleccion = entrada.nextInt();
+        DTProveedor proveedor = allProveedores.get(eleccion);
+
+        contador = 0;
+        System.out.println("Lista de todos los Departamentos");
+        for (DTDepartamento dtd: allDepartamentos) {
+            System.out.println("[" + contador + "]" + " : " + dtd.getNombreDepartamento());
+            contador ++;
+        }
+        System.out.println("Elija un Departamento");
+        eleccion = entrada.nextInt();
+        DTDepartamento departamento = allDepartamentos.get(eleccion);
+
+        System.out.println("Ingrese el nombre de la actividad");
+        String nombreAct = entrada.nextLine();
+
+        System.out.println("Ingrese la descripcion de la actividad");
+        String desc = entrada.nextLine();
+
+        System.out.println("Ingrese cuanto va a durar la actividad (horas)");
+        int hora = entrada.nextInt();
+
+        System.out.println("Ingrese cuanto va a costar");
+        int costo = entrada.nextInt();
+
+        System.out.println("Ingrese la ciudad en la que se va a realizar la actividad");
+        String ciudad = entrada.nextLine();
+
+        System.out.println("Ingrese el año");
+        int anio = entrada.nextInt();
+
+        System.out.println("Ingrese el mes");
+        int mes = entrada.nextInt();
+
+        System.out.println("Ingrese el dia");
+        int dia = entrada.nextInt();
+
+        LocalDate fechanac = LocalDate.of(anio , mes , dia);
+
+
+        }
 }

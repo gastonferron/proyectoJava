@@ -1,6 +1,7 @@
 package logica.entidades;
 
-import java.awt.*;
+import logica.DTs.DTDepartamento;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,18 +9,25 @@ public class Departamento {
     private String nombreDepartamento;
     private String descripcion;
     private String url;
-
-    private List<Actividad> actividads;
+    private List<Actividad> actividades;
 
     public Departamento() {
-        actividads = new ArrayList<>();
+        actividades = new ArrayList<>();
+    }
+
+    public DTDepartamento obtenerDTDepartamento(){
+        return new DTDepartamento(nombreDepartamento, descripcion, url);
     }
 
     public Departamento(String nombreDepartamento, String descripcion, String url) {
-        actividads = new ArrayList<>();
+        actividades = new ArrayList<>();
         this.nombreDepartamento = nombreDepartamento;
         this.descripcion = descripcion;
         this.url = url;
+    }
+
+    public void addActividad(Actividad actividad){
+        actividades.add(actividad);
     }
 
     public String getNombreDepartamento() {
@@ -47,10 +55,10 @@ public class Departamento {
     }
 
     public List<Actividad> getActividads() {
-        return actividads;
+        return actividades;
     }
 
     public void setActividads(List<Actividad> actividads) {
-        this.actividads = actividads;
+        this.actividades = actividads;
     }
 }

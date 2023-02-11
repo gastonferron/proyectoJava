@@ -22,8 +22,7 @@ public class Salida {
     }
 
     public DTSalida obtenerDTSalida(){
-        DTSalida dts = new DTSalida(nombreSalida, fechayHoraAlta, fechayHoraSalida,lugarSalida);
-        return  dts;
+        return new DTSalida(nombreSalida, fechayHoraAlta, fechayHoraSalida,lugarSalida);
     }
 
     public String getNombreSalida() {
