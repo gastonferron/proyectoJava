@@ -7,9 +7,12 @@ import logica.DTs.DTUsuario;
 import logica.controladores.Fabrica;
 import logica.controladores.IControladorActividadTuristica;
 import logica.controladores.IControladorUsuario;
+import logica.excepeciones.ActividadExiste;
 import logica.excepeciones.EntidadExiste;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
@@ -203,13 +206,15 @@ public class MetodosMain {
         DTDepartamento departamento = allDepartamentos.get(eleccion);
 
         System.out.println("Ingrese el nombre de la actividad");
-        String nombreAct = entrada.nextLine();
+        String idActividad = entrada.nextLine();
 
         System.out.println("Ingrese la descripcion de la actividad");
         String desc = entrada.nextLine();
 
         System.out.println("Ingrese cuanto va a durar la actividad (horas)");
         int hora = entrada.nextInt();
+
+        LocalTime duracionHoras = LocalTime.of(hora , 0);
 
         System.out.println("Ingrese cuanto va a costar");
         int costo = entrada.nextInt();
@@ -226,8 +231,12 @@ public class MetodosMain {
         System.out.println("Ingrese el dia");
         int dia = entrada.nextInt();
 
-        LocalDate fechanac = LocalDate.of(anio , mes , dia);
+        LocalDate fechaAlta = LocalDate.of(anio , mes , dia);
 
-
+        try {
+            iCAT.altaActividad(idActividad , desc, proveedor.getNickname(), duracionHoras, costo, ciudad, fechaAlta, departamento.getNombreDepartamento());
+        }catch (ActividadExiste e){
+            System.out.println("La actividad ya ha sido creada");
         }
+    }
 }

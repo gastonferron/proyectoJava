@@ -8,6 +8,7 @@ import logica.excepeciones.EntidadNoExiste;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.List;
 
 public interface IControladorActividadTuristica {
@@ -18,7 +19,7 @@ public interface IControladorActividadTuristica {
 
     public List<DTDepartamento> obtenerAllDepartamentos();
 
-    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String idProveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento)  throws ActividadExiste;
+    public void altaActividad(String idActividad, String descripcion, String idProveedor, LocalTime duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento)  throws ActividadExiste;
 
     public List<DTSalida> obtenerSalidas(String idActividades) throws EntidadNoExiste;
 

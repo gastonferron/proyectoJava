@@ -16,23 +16,23 @@ import logica.manejadores.ManejadorUsuario;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class ControladorActividadTuristica implements IControladorActividadTuristica{
 
     @Override
-    public void altaActividad(String nombreActividad, String descripcion, String lugarSalida, String idProveedor, int duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento) throws ActividadExiste {
+    public void altaActividad(String idActividad, String descripcion, String idProveedor, LocalTime duracionHoras, int costo, String ciudad, LocalDate fechaAlta, String idDepartamento) throws ActividadExiste {
         ManejadorActividad manejadorAct = ManejadorActividad.getInstanciaActividad();
         ManejadorDepartamento manejadorDepa = ManejadorDepartamento.getInstanciaDepartamento();
         ManejadorUsuario manejadorUsuario = ManejadorUsuario.getInstanciaUsuario();
-        ManejadorSalidaTuristica manejadorSalidaTuristica = ManejadorSalidaTuristica.getInstanciaTuristica();
 
-        if (manejadorAct.existActividad(nombreActividad)){
+        if (manejadorAct.existActividad(idActividad)){
             throw new ActividadExiste("La actividad ya ha sido creada");
         }
         else{
-            Actividad actividad = new Actividad(lugarSalida, nombreActividad, descripcion,duracionHoras, costo, ciudad, fechaAlta);
+            Actividad actividad = new Actividad(idActividad, descripcion,duracionHoras, costo, ciudad, fechaAlta);
             manejadorAct.addActividad(actividad);
             manejadorDepa.getDepartamento(idDepartamento).addActividad(actividad);
             ( (Proveedor) manejadorUsuario.getUser ( idProveedor ) ).addActividad(actividad);

@@ -1,15 +1,15 @@
 package logica.entidades;
 
 import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 public class Actividad {
-    private String lugarSalida;
-    private String nombreActividad;
+    private String idActividad;
     private String descripcion;
-    private int duracionHoras;
+    private LocalTime duracionHoras;
+
     private int costo;
     private String ciudad;
     private LocalDate fechaALta;
@@ -21,11 +21,10 @@ public class Actividad {
         paquetes = new ArrayList<>();
     }
 
-    public Actividad(String lugarSalida, String nombreActividad, String descripcion, int duracionHoras, int costo, String ciudad, LocalDate fechaALta) {
+    public Actividad(String idActividad, String descripcion, LocalTime duracionHoras, int costo, String ciudad, LocalDate fechaALta) {
         salidas = new ArrayList<>();
         paquetes = new ArrayList<>();
-        this.lugarSalida = lugarSalida;
-        this.nombreActividad = nombreActividad;
+        this.idActividad = idActividad;
         this.descripcion = descripcion;
         this.duracionHoras = duracionHoras;
         this.costo = costo;
@@ -33,20 +32,16 @@ public class Actividad {
         this.fechaALta = fechaALta;
     }
 
-    public String getLugarSalida() {
-        return lugarSalida;
-    }
-
-    public void setLugarSalida(String lugarSalida) {
-        this.lugarSalida = lugarSalida;
+    public void addSalidas(Salida salida){
+        salidas.add(salida);
     }
 
     public String getNombreActividad() {
-        return nombreActividad;
+        return idActividad;
     }
 
     public void setNombreActividad(String nombreActividad) {
-        this.nombreActividad = nombreActividad;
+        this.idActividad = idActividad;
     }
 
     public String getDescripcion() {
@@ -57,11 +52,11 @@ public class Actividad {
         this.descripcion = descripcion;
     }
 
-    public int getDuracionHoras() {
+    public LocalTime getDuracionHoras() {
         return duracionHoras;
     }
 
-    public void setDuracionHoras(int duracionHoras) {
+    public void setDuracionHoras(LocalTime duracionHoras) {
         this.duracionHoras = duracionHoras;
     }
 
