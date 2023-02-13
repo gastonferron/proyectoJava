@@ -22,6 +22,7 @@ public class main {
             System.out.println("Opcion 7: Consulta Salida Turistica");
             System.out.println("Opcion 8: Inscripcion Salida Turistica");
             System.out.println("Opcion 9: Alta Departamento");
+            System.out.println("Opcion 10: Pre-Carga");
             System.out.println("Opcion 0: Salir");
 
             int opciones = consola.nextInt();
@@ -41,6 +42,9 @@ public class main {
                     break;
                 case 9:
                     mm.altaDepartamento();
+                    break;
+                case 10:
+                    mm.preCarga();
                     break;
                 case 0:
                     salida = true;

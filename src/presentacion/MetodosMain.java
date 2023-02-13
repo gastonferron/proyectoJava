@@ -240,11 +240,39 @@ public class MetodosMain {
         Scanner entrada = new Scanner(System.in);
         Fabrica fabrica = Fabrica.getInstanciaFabrica();
         IControladorActividadTuristica iCAT = fabrica.getIControladorActividadTuristica();
-        List<DTActividad> allDepartamentos = iCAT.obtenerAllActividades();
+        List<DTDepartamento> allDepartamentos = iCAT.obtenerAllDepartamentos();
+
+        int contador = 0;
+        System.out.println("Lista de todos los Departamentos");
+        for (DTDepartamento dtd: allDepartamentos) {
+            System.out.println("[" + contador + "]" + " : " + dtd.getNombreDepartamento());
+            contador ++;
+        }
+        System.out.println("Elija un Departamento");
+        int eleccion = entrada.nextInt();
+        DTDepartamento departamento = allDepartamentos.get(eleccion);
     }
 
     public void inscripcionSalida(){
 
     }
+    public void preCarga(){
+        Fabrica fabrica = Fabrica.getInstanciaFabrica();
+        IControladorUsuario iCU = fabrica.getIControladorUsuario();
+        IControladorActividadTuristica icAct = fabrica.getIControladorActividadTuristica();
 
+        LocalDate fechanac = LocalDate.of(1 , 1 , 1);
+
+        String nickname = "Proveedor";
+        try {
+            iCU.altaProveedor(nickname, "Juan", "Perez", "jp@gmail.com", "UnEmpleadoMuyLaburador", "www.jp.com", fechanac);
+        }catch (EntidadExiste e){
+            System.out.println("Ese Proveedor ya existe");
+        }
+        try {
+            icAct.altaDepartamento("Artigas", "Todos son primos","www.artigas.com");
+        }catch (EntidadExiste e){
+            System.out.println("Ya existe el Departamento");
+        }
+    }
 }
