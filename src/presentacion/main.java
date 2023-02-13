@@ -40,7 +40,7 @@ public class main {
                     mm.altaDeActividadTuristica();
                     break;
                 case 9:
-                    mm.altaDepto();
+                    mm.altaDepartamento();
                     break;
                 case 0:
                     salida = true;

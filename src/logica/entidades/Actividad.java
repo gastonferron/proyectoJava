@@ -1,5 +1,7 @@
 package logica.entidades;
 
+import logica.DTs.DTActividad;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -9,7 +11,6 @@ public class Actividad {
     private String idActividad;
     private String descripcion;
     private LocalTime duracionHoras;
-
     private int costo;
     private String ciudad;
     private LocalDate fechaALta;
@@ -30,6 +31,10 @@ public class Actividad {
         this.costo = costo;
         this.ciudad = ciudad;
         this.fechaALta = fechaALta;
+    }
+
+    public DTActividad obtenerDTActividad(){
+        return new DTActividad(idActividad, descripcion, duracionHoras, costo, ciudad, fechaALta);
     }
 
     public void addSalidas(Salida salida){

@@ -1,9 +1,6 @@
 package presentacion;
 
-import logica.DTs.DTDepartamento;
-import logica.DTs.DTProveedor;
-import logica.DTs.DTTurista;
-import logica.DTs.DTUsuario;
+import logica.DTs.*;
 import logica.controladores.Fabrica;
 import logica.controladores.IControladorActividadTuristica;
 import logica.controladores.IControladorUsuario;
@@ -11,14 +8,13 @@ import logica.excepeciones.ActividadExiste;
 import logica.excepeciones.EntidadExiste;
 
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.time.LocalTime;
 import java.util.List;
 import java.util.Scanner;
 
 public class MetodosMain {
 
-    public void altaDepto(){
+    public void altaDepartamento(){
 
         Scanner entrada = new Scanner(System.in);
 
@@ -239,4 +235,16 @@ public class MetodosMain {
             System.out.println("La actividad ya ha sido creada");
         }
     }
+
+    public void altaSalidaTuristica(){
+        Scanner entrada = new Scanner(System.in);
+        Fabrica fabrica = Fabrica.getInstanciaFabrica();
+        IControladorActividadTuristica iCAT = fabrica.getIControladorActividadTuristica();
+        List<DTActividad> allDepartamentos = iCAT.obtenerAllActividades();
+    }
+
+    public void inscripcionSalida(){
+
+    }
+
 }

@@ -1,5 +1,6 @@
 package logica.controladores;
 
+import logica.DTs.DTActividad;
 import logica.DTs.DTDepartamento;
 import logica.DTs.DTSalida;
 import logica.entidades.Actividad;
@@ -37,6 +38,30 @@ public class ControladorActividadTuristica implements IControladorActividadTuris
             manejadorDepa.getDepartamento(idDepartamento).addActividad(actividad);
             ( (Proveedor) manejadorUsuario.getUser ( idProveedor ) ).addActividad(actividad);
         }
+    }
+
+    public DTActividad obtenerActividad(String idActividad) throws EntidadNoExiste{
+
+        ManejadorActividad mAct = ManejadorActividad.getInstanciaActividad();
+        Actividad act = mAct.getActividad(idActividad);
+        if (act == null){
+            throw new EntidadNoExiste("No existe esa Actividad");
+        }
+        else{
+            return act.obtenerDTActividad();
+        }
+    }
+
+    public List<DTActividad> obtenerAllActividades(){
+
+        ManejadorActividad mAct = ManejadorActividad.getInstanciaActividad();
+        List<Actividad> lista = mAct.allActividad();
+        List<DTActividad> listaAct = new ArrayList<>();
+
+        for (Actividad actividad: lista) {
+            listaAct.add(actividad.obtenerDTActividad());
+        }
+        return listaAct;
     }
 
     @Override
